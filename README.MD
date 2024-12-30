@@ -52,8 +52,7 @@ HSV_Filter_App/
 ## How to Use
 1. Upload an image through the interface.
 2. Adjust the sliders to set the desired HSV range.
-3. Click "Apply Filter" to preview the filtered image.
-4. Download the processed image by clicking the "Download" button.
+3. Click "Analyze" to preview the filtered image.
 
 This project is licensed under the MIT License. See the LICENSE file for details.
 
