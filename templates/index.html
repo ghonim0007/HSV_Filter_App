@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HSV Filter Application</title>
+     <!-- <link rel="stylesheet" href="/static/styleLL.css"> -->
+     <link rel="stylesheet" href="/static/style4L.css"> 
+     <link rel="stylesheet" href="/static/styleA.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap" rel="stylesheet"> 
+</head>
+<body>
+    <header>
+        <h1>HSV Filter Application</h1>
+    </header>
+
+    <main>
+        <form action="/" method="post" enctype="multipart/form-data">
+            <fieldset>
+                <legend>Image Analysis</legend>
+                <label for="image">Upload Image:</label>
+                <input type="file" name="image" required><br><br>
+
+                <label for="lower_h">Lower Hue (H):</label>
+                <input type="number" name="lower_h" min="0" max="179" required>
+                <label for="lower_s">Lower Saturation (S):</label>
+                <input type="number" name="lower_s" min="0" max="255" required>
+                <label for="lower_v">Lower Value (V):</label>
+                <input type="number" name="lower_v" min="0" max="255" required><br><br>
+
+                <label for="upper_h">Upper Hue (H):</label>
+                <input type="number" name="upper_h" min="0" max="179" required>
+                <label for="upper_s">Upper Saturation (S):</label>
+                <input type="number" name="upper_s" min="0" max="255" required>
+                <label for="upper_v">Upper Value (V):</label>
+                <input type="number" name="upper_v" min="0" max="255" required><br><br>
+
+                <button type="submit">Analyze</button>
+            </fieldset>
+        </form>
+
+       {% if original and mask and result %}
+            <h2>Results</h2>
+            <div class="results-images">
+                <div>
+                    <p>Original Image:</p>
+                    <img src="{{ original }}" alt="Original Image">
+                </div>
+                <div>
+                    <p>Filter Mask:</p>
+                    <img src="{{ mask }}" alt="Mask Image">
+                </div>
+                <div>
+                    <p>Final Result:</p>
+                    <img src="{{ result }}" alt="Result Image">
+                </div>
+            </div>
+        {% else %}
+            <p>No results to display. Please upload an image and select HSV filter values.</p>
+        {% endif %}
+
+        <section id="catalog">
+            <h2>Rock Guide using HSV</h2>
+            <div id="rock-list">
+                <ul>
+                    <li>Rock 1 - Color: #b3a7a2</li>
+                    <li>Rock 2 - Color: #7a736f</li>
+                    <li>Rock 3 - Color: #d8cfc4</li>
+                </ul>
+            </div>
+        </section>
+
+        
+    </main>
+
+    <footer>
+        <p>&copy; 2024 HSV Filter Application</p>
+    </footer>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
