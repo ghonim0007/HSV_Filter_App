@@ -54,6 +54,6 @@ HSV_Filter_App/
 2. Adjust the sliders to set the desired HSV range.
 3. Click "Analyze" to preview the filtered image.
 
-This project is licensed under the MIT License. See the LICENSE file for details.
+
 
 ---
