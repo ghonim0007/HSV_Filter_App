@@ -4,78 +4,156 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HSV Filter Application</title>
-    <link rel="stylesheet" href="/static/style4L.css"> 
-    
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Onboarding Modal -->
+    <div id="onboarding-modal" class="modal">
+        <div class="modal-content" id="tour-content">
+            <span class="close-btn" onclick="closeTour()">&times;</span>
+            
+            <!-- Step 1 -->
+            <div class="step active" data-target="header">
+                <h2>🚀 Let's Get Started!</h2>
+                <p class="animated-text">Welcome to the future of image analysis</p>
+                <div class="buttons">
+                    <button onclick="nextStep()">Next <span class="arrow">→</span></button>
+                    <button onclick="closeTour()">Skip Tour</button>
+                </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="step" data-target=".analysis-form">
+                <h2>📷 Upload Your Image</h2>
+                <p class="animated-text">This is where the magic begins!</p>
+                <div class="buttons">
+                    <button onclick="prevStep()">← Back</button>
+                    <button onclick="nextStep()">Next →</button>
+                </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="step" data-target=".input-group">
+                <h2>🌈 Set HSV Values</h2>
+                <p class="animated-text">Fine-tune your color detection parameters</p>
+                <div class="buttons">
+                    <button onclick="prevStep()">← Back</button>
+                    <button onclick="nextStep()">Next →</button>
+                </div>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="step" data-target=".results-section">
+                <h2>✨ View Results</h2>
+                <p class="animated-text">See your analysis come to life!</p>
+                <div class="buttons">
+                    <button onclick="prevStep()">← Back</button>
+                    <button onclick="nextStep()">Next →</button>
+                </div>
+            </div>
+
+            <!-- Step 5 -->
+            <div class="step" data-target=".rock-catalog">
+                <h2>📚 Rock Reference Guide</h2>
+                <p class="animated-text">Your personal geology assistant</p>
+                <div class="buttons">
+                    <button onclick="prevStep()">← Back</button>
+                    <button onclick="closeTour()">🎉 Finish Tour</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <header>
-        <h1>HSV Filter Application</h1>
+        <h1>HSV Image Filter Analyzer</h1>
     </header>
 
     <main>
-        <form action="/" method="post" enctype="multipart/form-data">
+        <!-- Flash messages -->
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <div class="notification-panel">
+              {% for message in messages %}
+                <div class="notification">{{ message }}</div>
+              {% endfor %}
+            </div>
+          {% endif %}
+        {% endwith %}
+
+        <form action="/" method="post" enctype="multipart/form-data" class="analysis-form">
             <fieldset>
                 <legend>Image Analysis</legend>
-                <label for="image">Upload Image:</label>
-                <input type="file" name="image" required><br><br>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="image">Upload Image:</label>
+                        <input type="file" name="image" id="image" required>
+                    </div>
+                </div>
 
-                <label for="lower_h">Lower Hue (H):</label>
-                <input type="number" name="lower_h" min="0" max="179" required>
-                <label for="lower_s">Lower Saturation (S):</label>
-                <input type="number" name="lower_s" min="0" max="255" required>
-                <label for="lower_v">Lower Value (V):</label>
-                <input type="number" name="lower_v" min="0" max="255" required><br><br>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Lower HSV Values:</label>
+                        <div class="input-group">
+                            <input type="number" name="lower_h" min="0" max="179" placeholder="Hue (0-179)" required>
+                            <input type="number" name="lower_s" min="0" max="255" placeholder="Saturation (0-255)" required>
+                            <input type="number" name="lower_v" min="0" max="255" placeholder="Value (0-255)" required>
+                        </div>
+                    </div>
+                </div>
 
-                <label for="upper_h">Upper Hue (H):</label>
-                <input type="number" name="upper_h" min="0" max="179" required>
-                <label for="upper_s">Upper Saturation (S):</label>
-                <input type="number" name="upper_s" min="0" max="255" required>
-                <label for="upper_v">Upper Value (V):</label>
-                <input type="number" name="upper_v" min="0" max="255" required><br><br>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Upper HSV Values:</label>
+                        <div class="input-group">
+                            <input type="number" name="upper_h" min="0" max="179" placeholder="Hue (0-179)" required>
+                            <input type="number" name="upper_s" min="0" max="255" placeholder="Saturation (0-255)" required>
+                            <input type="number" name="upper_v" min="0" max="255" placeholder="Value (0-255)" required>
+                        </div>
+                    </div>
+                </div>
 
-                <button type="submit">Analyze</button>
+                <button type="submit" class="primary-btn">Analyze Image</button>
             </fieldset>
         </form>
 
-       {% if original and mask and result %}
-            <h2>Results</h2>
-            <div class="results-images">
-                <div>
-                    <p>Original Image:</p>
-                    <img src="{{ original }}" alt="Original Image">
+        <!-- Results Section -->
+        {% if original and mask and result %}
+            <section class="results-section">
+                <h2>Analysis Results</h2>
+                <div class="image-grid">
+                    <div class="image-card">
+                        <h3>Original Image</h3>
+                        <img src="{{ original }}" alt="Original Image">
+                    </div>
+                    <div class="image-card">
+                        <h3>Filter Mask</h3>
+                        <img src="{{ mask }}" alt="Filter Mask">
+                    </div>
+                    <div class="image-card">
+                        <h3>Final Result</h3>
+                        <img src="{{ result }}" alt="Processed Image">
+                    </div>
                 </div>
-                <div>
-                    <p>Filter Mask:</p>
-                    <img src="{{ mask }}" alt="Mask Image">
-                </div>
-                <div>
-                    <p>Final Result:</p>
-                    <img src="{{ result }}" alt="Result Image">
-                </div>
-            </div>
+            </section>
         {% else %}
-            <p>No results to display. Please upload an image and select HSV filter values.</p>
+            <div class="no-results">
+                <p>No results to display. Please upload an image and set HSV values.</p>
+            </div>
         {% endif %}
 
-        <section id="catalog">
-            <h2>Rock Guide using HSV</h2>
-            <div id="rock-list">
-                <ul>
-                    <li>Rock 1 - Color: #b3a7a2</li>
-                    <li>Rock 2 - Color: #7a736f</li>
-                    <li>Rock 3 - Color: #d8cfc4</li>
-                </ul>
-            </div>
+        <!-- Rock Catalog Section -->
+        <section id="catalog" class="rock-catalog">
+            <h2>Rock HSV Reference Guide</h2>
+            <div id="rock-list" class="catalog-grid"></div>
         </section>
-
-        
     </main>
 
     <footer>
         <p>&copy; 2024 HSV Filter Application</p>
     </footer>
 
-    <script src="/static/script.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
