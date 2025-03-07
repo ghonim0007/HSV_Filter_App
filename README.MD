@@ -54,7 +54,7 @@ The app includes an interactive onboarding tour to help users get started:
 - Displays the processed image with applied HSV filters.
 
 #### Step 5: Rock Reference Guide
-![Step 5](Screenshots/step5.png)
+![Step 5](Screenshots/Step 5.png)
 - Provides geological reference information for rock classification.
 
 ## Contribution
