@@ -70,5 +70,4 @@ This project is licensed under the MIT License.
 
 ---
 
-For any issues or feature requests, feel free to open an issue on the [GitHub repository](https://github.com/ghonim0007/HSV_Filter_App/issues).
 
