@@ -37,24 +37,24 @@ The **HSV Filter App** is an advanced image analysis tool that allows users to f
 The app includes an interactive onboarding tour to help users get started:
 
 #### Step 1: Welcome
-![Step 1](Screenshots/Step 1.png)
+![Step 1](Screenshots/step1.png)
 - Introduction to the application and its capabilities.
 - Users can proceed to the next step or skip the tour.
 
 #### Step 2: Upload Your Image
-![Step 2](Screenshots/Step 2.png)
+![Step 2](Screenshots/step2.png)
 - Allows users to upload an image for analysis.
 
 #### Step 3: Set HSV Values
-![Step 3](Screenshots/Step 3.png)
+![Step 3](Screenshots/step3.png)
 - Users can fine-tune HSV values to adjust color filtering.
 
 #### Step 4: View Results
-![Step 4](Screenshots/Step 4.png)
+![Step 4](Screenshots/step4.png)
 - Displays the processed image with applied HSV filters.
 
 #### Step 5: Rock Reference Guide
-![Step 5](Screenshots/Step 5.png)
+![Step 5](Screenshots/step5.png)
 - Provides geological reference information for rock classification.
 
 ## Contribution
@@ -70,4 +70,5 @@ This project is licensed under the MIT License.
 
 ---
 
+For any issues or feature requests, feel free to open an issue on the [GitHub repository](https://github.com/ghonim0007/HSV_Filter_App/issues).
 
