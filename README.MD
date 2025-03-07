@@ -1,74 +1,58 @@
-# HSV Filter App
+# HSV Filter Web App
 
-## Overview
-The **HSV Filter App** is an advanced image analysis tool that allows users to fine-tune HSV color detection parameters and analyze images effectively. The app provides a seamless onboarding experience through an interactive step-by-step guide.
+## 🎨 About the Project
+HSV Filter Web App is an interactive web application designed for analyzing images using the HSV (Hue, Saturation, Value) color space. The app provides a user-friendly interface to upload images, adjust HSV values, and visualize the filtered results.
 
-## Features
-- 🚀 **Step-by-step onboarding modal** to guide new users.
-- 📷 **Image upload functionality** for real-time HSV filtering.
-- 🌈 **Customizable HSV parameters** for precise color detection.
-- ✨ **Instant result visualization** to see filtered images immediately.
-- 📚 **Rock reference guide** for geology-based applications.
+## ✨ Features
+- 📷 **Upload Images**: Users can upload their own images for analysis.
+- 🌈 **Adjust HSV Values**: Fine-tune the hue, saturation, and value parameters to detect specific colors.
+- 🖼 **Real-time Filtering**: Instantly preview the results as you adjust settings.
+- 📚 **Rock Reference Guide**: Integrated guide for geological analysis.
 
-## Installation
-1. Clone the repository:
-   ```sh
-   git clone https://github.com/ghonim0007/HSV_Filter_App.git
-   ```
-2. Navigate to the project directory:
-   ```sh
-   cd HSV_Filter_App
-   ```
-3. Install dependencies:
-   ```sh
-   pip install -r requirements.txt
-   ```
-4. Run the application:
-   ```sh
-   python app.py
-   ```
-5. Open your browser and visit:
-   ```sh
-   http://127.0.0.1:5000
-   ```
+## 🚀 How to Use
+### Step 1: Getting Started
+Welcome to the future of image analysis! Click **Next** to begin.
 
-## User Guide
-### Step-by-Step Onboarding
-The app includes an interactive onboarding tour to help users get started:
+![Step 1](Screenshots/Step1.png)
 
-#### Step 1: Welcome
-![Step 1](Screenshots/step1.png)
-- Introduction to the application and its capabilities.
-- Users can proceed to the next step or skip the tour.
+### Step 2: Upload Your Image
+Upload an image to start the analysis.
 
-#### Step 2: Upload Your Image
-![Step 2](Screenshots/step2.png)
-- Allows users to upload an image for analysis.
+![Step 2](Screenshots/Step2.png)
 
-#### Step 3: Set HSV Values
-![Step 3](Screenshots/step3.png)
-- Users can fine-tune HSV values to adjust color filtering.
+### Step 3: Set HSV Values
+Adjust the HSV values to fine-tune the color detection.
 
-#### Step 4: View Results
-![Step 4](Screenshots/step4.png)
-- Displays the processed image with applied HSV filters.
+![Step 3](Screenshots/Step3.png)
 
-#### Step 5: Rock Reference Guide
-![Step 5](Screenshots/Step 5.png)
-- Provides geological reference information for rock classification.
+### Step 4: View Results
+See your analysis results in real-time.
 
-## Contribution
-Contributions are welcome! Follow these steps to contribute:
-1. Fork the repository.
-2. Create a new branch: `git checkout -b feature-branch`.
-3. Make your changes and commit: `git commit -m "Add new feature"`.
-4. Push to the branch: `git push origin feature-branch`.
-5. Open a Pull Request.
+![Step 4](Screenshots/Step4.png)
 
-## License
-This project is licensed under the MIT License.
+### Step 5: Rock Reference Guide
+Use the integrated reference guide for geology-related insights.
+
+![Step 5](Screenshots/Step5.png)
+
+### 🎉 Final Result
+Here is an example of the final output of the analysis:
+
+![Final Result](Screenshots/Finalresult.gif)
+
+## 🛠 Technologies Used
+- **Frontend**: HTML, CSS, JavaScript
+- **Backend**: Python (Flask)
+- **Libraries**: OpenCV for image processing
+
+## 📌 Future Enhancements
+- 🔄 Improve the accuracy of HSV filtering
+- 📊 Add support for additional image processing techniques
+- 🌍 Enable multi-language support
+
+## 📬 Contact
+For any inquiries or feature requests, feel free to reach out via GitHub Issues!
 
 ---
-
-For any issues or feature requests, feel free to open an issue on the [GitHub repository](https://github.com/ghonim0007/HSV_Filter_App/issues).
+🚀 Happy Image Processing!
 
